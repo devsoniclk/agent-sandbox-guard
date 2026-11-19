@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-sandbox-guard"
+version = "0.1.0"
+description = "Runtime security containment, tool-call interception & kernel sandbox boundary for autonomous AI agents"
+readme = "README.md"
+authors = [
+    { name = "Lakshitha Dananjaya", email = "dananjayarox01@gmail.com" }
+]
+license = "MIT"
+keywords = [
+    "ai-agents",
+    "security",
+    "sandboxing",
+    "tool-containment",
+    "prompt-injection",
+    "autonomous-agents",
+    "runtime-protection",
+    "mcp",
+    "devsecops"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+mcp = [
+    "fastmcp>=0.1.0"
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0"
+]
+
+[project.scripts]
+agent-sandbox-guard = "agent_sandbox_guard.cli:main"
+asg = "agent_sandbox_guard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/devsoniclk/agent-sandbox-guard"
+Repository = "https://github.com/devsoniclk/agent-sandbox-guard"
+Documentation = "https://github.com/devsoniclk/agent-sandbox-guard#readme"
+"Bug Tracker" = "https://github.com/devsoniclk/agent-sandbox-guard/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent_sandbox_guard"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
